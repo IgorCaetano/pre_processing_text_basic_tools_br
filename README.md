@@ -35,7 +35,7 @@ print(texto_limpo)
 
 
 
->>>Este é um exemplo de texto com caractéres especiais Quero limpá-lo
+>>>"Este é um exemplo de texto com caractéres especiais Quero limpá-lo"
 ```
 
 <details>
@@ -56,7 +56,7 @@ print(texto_limpo)
 
 
 
-  >>>Hoje é sexta feira e dia 09 03 2024 Ou ainda 09 03 2024
+  >>>"Hoje é sexta feira e dia 09 03 2024 Ou ainda 09 03 2024"
   ```
 </details>
 
@@ -81,7 +81,7 @@ print(texto_formatado)
 
 
 
->>>este e um exemplo de texto que quero formatar e padronizar
+>>>"este e um exemplo de texto que quero formatar e padronizar"
 ```
 
 ### Padronização de elementos diversos
@@ -119,12 +119,12 @@ print(texto_formatado)
 
 
 
->>>se eu tiver um texto com e-mail tipo _email_ ou _email_ ou ate mesmo _email_
+>>>"""se eu tiver um texto com e-mail tipo _email_ ou _email_ ou ate mesmo _email_
 alem disso terei tambem varios telefones do tipo _tel_ ou _tel_ e por que nao um fixo do tipo _tel_
 pode-se ter tambem datas como _data_ ou _data_ em variados tipos tipo _data_
 e se o texto tiver muito dinheiro envolvido falamos de $ ou $ ou ate com 
 a formatacao errada tipo $
-alem disso podemos simplesmente padronizar numeros como 0 ou 0 ou 0 ou ate mesmo 0
+alem disso podemos simplesmente padronizar numeros como 0 ou 0 ou 0 ou ate mesmo 0"""
 ```
 
 ### Tokenização de textos
