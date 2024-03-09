@@ -425,6 +425,7 @@ def tokenizarTexto(texto : str | list,
         return lista_de_frases_com_tokens
 
 def contarFrequenciaDePalavras(texto : str | list,
+                               palavras_especificas : list[str] | None = None,
                                n_top : int = -1,
                                remover_palavras_de_escape : bool = True,
                                lista_com_palavras_de_escape : list = lista_com_palavras_de_escape_padrao_frequencia,
@@ -432,22 +433,37 @@ def contarFrequenciaDePalavras(texto : str | list,
 
     lista_tokenizada = tokenizarTexto(texto=texto,remover_palavras_de_escape=remover_palavras_de_escape,lista_com_palavras_de_escape=lista_com_palavras_de_escape,tratamento_padrao=tratamento_padrao)
     dic = {}
-    if lista_tokenizada:
+    if palavras_especificas:
         if isinstance(lista_tokenizada[0],str):
-            for token in lista_tokenizada:
-                if token not in lista_com_palavras_de_escape:
-                    if token not in dic.keys():
-                        dic[token] = 1
-                    else:
-                        dic[token] += 1
+            for token in palavras_especificas:
+                if token not in dic.keys():
+                    dic[token] = lista_tokenizada.count(token)
         elif isinstance(lista_tokenizada[0],list):
             for frase in lista_tokenizada:
-                for token in frase:
+                tokens_usados = []
+                for token in palavras_especificas:
+                    if token not in tokens_usados:
+                        if token not in dic.keys():
+                            dic[token] = frase.count(token)
+                    else:
+                        dic[token] += frase.count(token)
+    else:
+        if lista_tokenizada:
+            if isinstance(lista_tokenizada[0],str):
+                for token in lista_tokenizada:
                     if token not in lista_com_palavras_de_escape:
                         if token not in dic.keys():
                             dic[token] = 1
                         else:
                             dic[token] += 1
+            elif isinstance(lista_tokenizada[0],list):
+                for frase in lista_tokenizada:
+                    for token in frase:
+                        if token not in lista_com_palavras_de_escape:
+                            if token not in dic.keys():
+                                dic[token] = 1
+                            else:
+                                dic[token] += 1
     lista_de_frequencias = []
     for token in dic.keys():
         frequencia_do_token = dic[token]
