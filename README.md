@@ -3,6 +3,7 @@
 
 Este pacote é um kit de ferramentas (variadas funções) para execução de processos básicos relacionados as etapas iniciais de processamento de linguagem natural.
 
+**Versão em inglês disponível em: *[pre_processing_text_basic_tools](https://github.com/IgorCaetano/pre_processing_text_basic_tools)***
 
 ## Funcionalidades
 
@@ -175,7 +176,7 @@ print(tokenizacao)
 <details>
   <summary>Tokenização removendo palavras de escape/stopwords com lista de stopwords personalizada  <i>(clique para expandir)</i></summary>
   <br>
-  Podemos também selecionar uma lista de stopwords personalizada, adicionando, removendo da lista padrão <i>lista_com_palavras_de_escape_padrao_tokenizacao</i> ou até mesmo criando uma lista totalmente única.
+  Podemos também selecionar uma lista de stopwords personalizada, adicionando ou removendo da lista padrão <i>lista_com_palavras_de_escape_padrao_tokenizacao</i> ou até mesmo criando uma lista totalmente única.
   <br>
 
   ```python
