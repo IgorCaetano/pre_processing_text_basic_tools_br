@@ -1,9 +1,7 @@
 
 # Ferramentas básicas para Processamento de Linguagem Natural
 
-Este pacote é um kit de ferramentas (variadas funções) para execução de processos básicos relacionados ao processamento de linguagem natural, muito utilizados para limpeza / pré-processamento de texto antes de inserir os corpus de textos num modelo de treinamento.
-
-
+Este pacote é um kit de ferramentas (variadas funções) para execução de processos básicos relacionados as etapas iniciais de processamento de linguagem natural.
 
 
 ## Funcionalidades
@@ -136,7 +134,7 @@ print(tokenizacao)
 
 Aplicação 2
 ```python
-from pre_processing_text_basic_tools_br.main import tokenizarTexto
+from pre_processing_text_basic_tools_br import tokenizarTexto
 
 texto = '''Este é mais um texto de exemplo para a tokenização!!! Vamos usar caractéres, 
 especiais também @igorc.s e segue lá?!'''
@@ -152,7 +150,7 @@ print(tokenizacao)
 
 Aplicação 3
 ```python
-from pre_processing_text_basic_tools_br.main import tokenizarTexto
+from pre_processing_text_basic_tools_br import tokenizarTexto
 from pre_processing_text_basic_tools_br import lista_com_palavras_de_escape_padrao_tokenizacao
 
 texto = '''Este é mais um texto de exemplo para a tokenização!!! Vamos usar caractéres, 
@@ -178,7 +176,7 @@ print(tokenizacao)
 
     
   ```python
-  from pre_processing_text_basic_tools_br.main import tokenizarTexto
+  from pre_processing_text_basic_tools_br import tokenizarTexto
   from pre_processing_text_basic_tools_br import lista_com_palavras_de_escape_padrao_tokenizacao
 
   texto = '''Este é mais um texto de exemplo para a tokenização!!! Vamos usar caractéres, 
