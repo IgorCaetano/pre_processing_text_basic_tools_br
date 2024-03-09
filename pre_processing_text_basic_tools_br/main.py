@@ -87,7 +87,10 @@ def removerCaracteresEspeciais(texto : str,
         texto = texto.translate(str.maketrans('','',string_com_os_caracteres_especiais))
     else:
         # string_com_os_caracteres_especiais_add_space = re.sub(r'\,\.\!|\#|\$|\%|\&\(|\)\+|\-|\?|\@\[|\]|\{|\||\}|\~','',string_com_os_caracteres_especiais)
-        string_com_os_caracteres_especiais_add_space = r'\/\\'
+        if remover_hifen_de_palavras:
+            string_com_os_caracteres_especiais_add_space = r'\/\\\-'
+        else:
+            string_com_os_caracteres_especiais_add_space = r'\/\\'
         texto = texto.translate(str.maketrans(string_com_os_caracteres_especiais_add_space,' '*len(string_com_os_caracteres_especiais_add_space)))
         texto = texto.translate(str.maketrans('','',string_com_os_caracteres_especiais))
     if remover_espacos_em_branco_que_sobrarem:

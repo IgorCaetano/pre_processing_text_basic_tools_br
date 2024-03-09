@@ -38,17 +38,30 @@ print(texto_limpo)
 >>>Este é um exemplo de texto com caractéres especiais Quero limpá-lo
 ```
 
-É importante destacar que as funções foram pensadas para aplicações para a língua portuguesa. Com isso, palavras com hífen, como sexta-feira, não tem seu caracter especial "-" removido por padrão, mas pode-se escolher pela remoção dos hífens de tais palavras usando o parâmetro *remover_hifen_de_palavras*, passando para *True*.
+<details>
+  <summary>Observação importante sobre palavras com hífen  <i>(clique para expandir)</i></summary>
+  <br>
+  É importante destacar que as funções foram pensadas para aplicações diretas para a língua portuguesa. Com isso, palavras com hífen, como sexta-feira, não tem seu caracter especial "-" removido por padrão, mas pode-se optar pela remoção dos hífens de tais palavras usando o parâmetro <i>remover_hifen_de_palavras</i>, passando para <i>True</i>. Ainda, se quiser que os hífens não sejam substituídos por um espaço " ", pode-se passar o parâmetro <i>tratamento_personalizado</i> para <i>False</i>, o qual substitui caractéres "/", "\" e "-" para " ".
+  <br><br>
+  
+  ```python
+  from pre_processing_text_basic_tools_br import removerCaracteresEspeciais
 
-```python
-texto_limpo = removerCaracteresEspeciais(texto,remover_hifen_de_palavras=True)
-
-print(texto_limpo)
+  texto = '''Hoje é sexta-feira e dia 09/03/2024! Ou ainda 09-03-2024.'''
 
 
+  texto_limpo = removerCaracteresEspeciais(texto,remover_hifen_de_palavras=True)
 
->>>Este é um exemplo de texto com caractéres especiais Quero limpálo
-```
+  print(texto_limpo)
+
+
+
+  >>>Hoje é sexta feira e dia 09 03 2024 Ou ainda 09 03 2024
+  ```
+</details>
+
+
+
 
 ### Formatação e padronização total do texto
 
@@ -116,7 +129,7 @@ alem disso podemos simplesmente padronizar numeros como 0 ou 0 ou 0 ou ate mesmo
 
 ### Tokenização de textos
 
-Aplicação 1
+Tokenização básica
 ```python
 from pre_processing_text_basic_tools_br.main import tokenizarTexto
 
@@ -132,48 +145,66 @@ print(tokenizacao)
 >>>['este', 'é', 'mais', 'um', 'texto', 'de', 'exemplo', 'para', 'a', 'tokenização', 'vamos', 'usar', 'caractéres', 'especiais', 'também', 'igorcs', 'e', 'segue', 'lá']
 ```
 
-Aplicação 2
-```python
-from pre_processing_text_basic_tools_br import tokenizarTexto
+# 
 
-texto = '''Este é mais um texto de exemplo para a tokenização!!! Vamos usar caractéres, 
-especiais também @igorc.s e segue lá?!'''
+<details>
+  <summary>Tokenização removendo palavras de escape/stopwords  <i>(clique para expandir)</i></summary>
+  <br>
+  Palavras de escape ou stopwords são palavras que não apresentam muito significado em frases, dessa forma algumas aplicações, a fim de otimizarem seu processamento e tempo de treinamento, removem tais palavras do corpus de texto. Alguns exemplos de stopwords comuns são artigos e preposições.
+  <br>
 
-tokenizacao = tokenizarTexto(texto,remover_palavras_de_escape=True)
+  ```python
+  from pre_processing_text_basic_tools_br import tokenizarTexto
 
-print(tokenizacao)
+  texto = '''Este é mais um texto de exemplo para a tokenização!!! Vamos usar caractéres, 
+  especiais também @igorc.s e segue lá?!'''
 
+  tokenizacao = tokenizarTexto(texto,remover_palavras_de_escape=True)
 
-
->>>['este', 'é', 'mais', 'um', 'texto', 'exemplo', 'para', 'tokenização', 'vamos', 'usar', 'caractéres', 'especiais', 'também', 'igorcs', 'segue', 'lá']
-```
-
-Aplicação 3
-```python
-from pre_processing_text_basic_tools_br import tokenizarTexto
-from pre_processing_text_basic_tools_br import lista_com_palavras_de_escape_padrao_tokenizacao
-
-texto = '''Este é mais um texto de exemplo para a tokenização!!! Vamos usar caractéres, 
-especiais também @igorc.s e segue lá?!'''
-
-lista_stop_words_personalizada = lista_com_palavras_de_escape_padrao_tokenizacao + ['este','mais','um','para','também','lá']
-
-tokenizacao = tokenizarTexto(texto,remover_palavras_de_escape=True,lista_com_palavras_de_escape=lista_stop_words_personalizada)
-
-print(tokenizacao)
+  print(tokenizacao)
 
 
 
->>>['este', 'é', 'texto', 'exemplo', 'tokenização', 'vamos', 'usar', 'caractéres', 'especiais', 'igorcs', 'segue']
-```
+  >>>['este', 'é', 'mais', 'um', 'texto', 'exemplo', 'para', 'tokenização', 'vamos', 'usar', 'caractéres', 'especiais', 'também', 'igorcs', 'segue', 'lá']
+  ```
+
+</details>
 
 # 
 
 <details>
-  <summary>Com mais complexidade  <i>(clique para expandir)</i></summary>
-    
-  Aplicação 4
+  <summary>Tokenização removendo palavras de escape/stopwords com lista de stopwords personalizada  <i>(clique para expandir)</i></summary>
+  <br>
+  Podemos também selecionar uma lista de stopwords personalizada, adicionando, removendo da lista padrão <i>lista_com_palavras_de_escape_padrao_tokenizacao</i> ou até mesmo criando uma lista totalmente única.
+  <br>
 
+  ```python
+  from pre_processing_text_basic_tools_br import tokenizarTexto
+  from pre_processing_text_basic_tools_br import lista_com_palavras_de_escape_padrao_tokenizacao
+
+  texto = '''Este é mais um texto de exemplo para a tokenização!!! Vamos usar caractéres, 
+  especiais também @igorc.s e segue lá?!'''
+
+  lista_stop_words_personalizada = lista_com_palavras_de_escape_padrao_tokenizacao + ['este','mais','um','para','também','lá']
+
+  tokenizacao = tokenizarTexto(texto,remover_palavras_de_escape=True,lista_com_palavras_de_escape=lista_stop_words_personalizada)
+
+  print(tokenizacao)
+
+
+
+  >>>['este', 'é', 'texto', 'exemplo', 'tokenização', 'vamos', 'usar', 'caractéres', 'especiais', 'igorcs', 'segue']
+  ```
+
+</details>
+
+# 
+
+<details>
+  <summary>Tokenização mais completa  <i>(clique para expandir)</i></summary>
+  <br>
+  Pode-se também utilizar uma formatação prévia antes do processo de tokenização. No exemplo abaixo passa-se o texto para a forma canônica antes de tokenizá-lo. Ou seja, palavras como "coração" passam a ser "coracao", perdendo seus acentos, "ç", etc.
+  <br>
     
   ```python
   from pre_processing_text_basic_tools_br import tokenizarTexto
@@ -181,6 +212,8 @@ print(tokenizacao)
 
   texto = '''Este é mais um texto de exemplo para a tokenização!!! Vamos usar caractéres, 
   especiais também @igorc.s e segue lá?!'''
+
+  lista_stop_words_personalizada = lista_com_palavras_de_escape_padrao_tokenizacao + ['este','mais','um','para','também','lá']
 
   texto = formatacaoTotalDeTexto(texto,padronizar_forma_canonica=True)
 
