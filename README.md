@@ -3,7 +3,9 @@
 
 Este pacote é um kit de ferramentas (variadas funções) para execução de processos básicos relacionados as etapas iniciais de processamento de linguagem natural.
 
-**Versão em inglês disponível em: *[pre_processing_text_basic_tools](https://github.com/IgorCaetano/pre_processing_text_basic_tools)***
+**Versão em inglês disponível em:** 
+- [Github](https://github.com/IgorCaetano/pre_processing_text_basic_tools)
+- [Pypi](https://pypi.org/project/pre-processing-text-basic-tools/)
 
 ## Funcionalidades
 
