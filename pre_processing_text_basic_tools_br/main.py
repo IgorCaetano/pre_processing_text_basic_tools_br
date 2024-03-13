@@ -328,6 +328,7 @@ def juntarTextoComQuebrasDeLinhas(texto_completo : str,
         return ' '.join(frases_completas_por_linha)
 
 def tokenizarTexto(texto : str | list,
+                   dividir_as_frases : bool = False,
                    remover_palavras_de_escape : bool = False,
                    lista_com_palavras_de_escape : list = lista_com_palavras_de_escape_padrao_tokenizacao,
                    desconsiderar_acentuacao_nas_palavras_de_escape : bool = False,
@@ -451,19 +452,13 @@ def contarFrequenciaDePalavras(texto : str | list,
         if lista_tokenizada:
             if isinstance(lista_tokenizada[0],str):
                 for token in lista_tokenizada:
-                    if token not in lista_com_palavras_de_escape:
-                        if token not in dic.keys():
-                            dic[token] = 1
-                        else:
-                            dic[token] += 1
+                    if token not in dic.keys():
+                        dic[token] = lista_tokenizada.count(token)
             elif isinstance(lista_tokenizada[0],list):
                 for frase in lista_tokenizada:
                     for token in frase:
-                        if token not in lista_com_palavras_de_escape:
-                            if token not in dic.keys():
-                                dic[token] = 1
-                            else:
-                                dic[token] += 1
+                        if token not in dic.keys():
+                            dic[token] = frase.count(token)                        
     lista_de_frequencias = []
     for token in dic.keys():
         frequencia_do_token = dic[token]
@@ -477,25 +472,25 @@ def contarFrequenciaDePalavras(texto : str | list,
 
     return lista_de_frequencias
 
-def formatacaoTotalDeTexto(texto : str,
-                           padronizar_texto_para_minuscula : bool = True,
-                           remover_caracteres_mais_que_especiais : bool = True,
-                           remover_caracteres_especiais : bool = True,
-                           string_com_os_caracteres_especiais : str = string_com_caracteres_especiais_padrao,
-                           remover_espacos_em_branco_em_excesso : bool = True,
-                           padronizar_links : bool = False,
-                           padrao_link : str = 'LINK',
-                           padronizar_numeros : bool = False,
-                           padrao_numero : str = 'NUM',
-                           padronizar_dinheiros : bool = False,
-                           padrao_dinheiro : str = '$',
-                           padronizar_datas : bool = False,
-                           padrao_data : str = 'DATA',
-                           padronizar_emails : bool = False,
-                           padrao_email : str = 'EMAIL',
-                           padronizar_telefone_celular : bool = False,
-                           padrao_tel : str = 'TEL',
-                           padronizar_forma_canonica : bool = False) -> str:
+def formatarTexto(texto : str,
+                  padronizar_texto_para_minuscula : bool = True,
+                  remover_caracteres_mais_que_especiais : bool = True,
+                  remover_caracteres_especiais : bool = True,
+                  string_com_os_caracteres_especiais : str = string_com_caracteres_especiais_padrao,
+                  remover_espacos_em_branco_em_excesso : bool = True,
+                  padronizar_links : bool = False,
+                  padrao_link : str = 'LINK',
+                  padronizar_numeros : bool = False,
+                  padrao_numero : str = 'NUM',
+                  padronizar_dinheiros : bool = False,
+                  padrao_dinheiro : str = '$',
+                  padronizar_datas : bool = False,
+                  padrao_data : str = 'DATA',
+                  padronizar_emails : bool = False,
+                  padrao_email : str = 'EMAIL',
+                  padronizar_telefone_celular : bool = False,
+                  padrao_tel : str = 'TEL',
+                  padronizar_forma_canonica : bool = False) -> str:
     if remover_caracteres_mais_que_especiais:
         texto = removerCaracteresMaisQueEspeciais(texto)
     if padronizar_dinheiros:
