@@ -151,7 +151,7 @@ Mais informações sobre o pacote no Pypi: <b><a href="https://pypi.org/project/
   <summary>Contagem de frequência de palavras no texto  <i>(clique para expandir)</i></summary>
   <br>
   
-  Este kit de funções permite realizar a contagem de palavras em um texto. Por padrão, ele elimina da contagem as palavras contidas na lista de palavras de escape para calcular a frequência: <i>lista_com_palavras_de_escape_padrao_frequencia</i>. Caso queira desativar esta funcionalidade, basta passar como parâmetro "<i>remover_palavras_de_escape</i>=True". Abaixo temos um exemplo de um uso simples da função de contar a frequência de uma palavra numa determinada frase:
+  Este kit de funções permite realizar a contagem de palavras em um texto. Por padrão, ele elimina da contagem as palavras contidas na lista de palavras de escape para calcular a frequência: <i>lista_com_palavras_de_escape_padrao_frequencia</i>. Caso queira desativar esta funcionalidade, basta passar como parâmetro "<i>remover_palavras_de_escape</i>=False". Abaixo temos um exemplo de um uso simples da função de contar a frequência de uma palavra numa determinada frase:
 
   ```python
   from pre_processing_text_basic_tools_br import contarFrequenciaDePalavras
